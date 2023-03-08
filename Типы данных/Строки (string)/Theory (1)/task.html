@@ -1,0 +1,72 @@
+<h1>Доступ к символам </h1>
+
+<p>Еще одной особенностью строки является то, что мы можем получить доступ к ее символам. Проще показать это  на примрере</p>
+
+<pre><code class="language-javascript">let str = `Я строка`;
+
+//Превая буква
+console.log( str[0] ); // Я
+console.log( str.charAt(0) ); // Я
+
+//Третья буква
+console.log( str[2] ); // с
+console.log( str.charAt(2) ); // с
+
+//Последняя буква
+console.log( str[str.length - 1]) //  а
+
+
+</code></pre>
+
+<p>Наверное, первый вопрос — почему при <code>[0]</code> получается первый элемент? Ответ довольно простой — почти вся нумерация строк и массивов начинается с 0. На то есть исторические причины и привычка программистов. Вообще цифра в скобочках — это <strong>индекс элемента</strong>.</p>
+
+<p>Можно представить, что каждая буква лежит в своей ячейке</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px;">
+	<tbody>
+		<tr>
+			<td>[]/индекс</td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+		</tr>
+		<tr>
+			<td>Символ</td>
+			<td>Я</td>
+			<td> </td>
+			<td>с</td>
+			<td>т</td>
+			<td>р</td>
+			<td>о</td>
+			<td>к</td>
+			<td>а</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Аналогично работает и метод <code>CharAt()</code> в который мы передаем индекс. </p>
+
+<p>Возможно мы захотим получить элемент, которого нет в исходной строке.</p>
+
+<pre><code class="language-javascript">let str = `Я строка`;
+console.log(str[999]); // undefined</code></pre>
+
+<p> <code>ChatAt()</code> в этом же случае вернет пустую строку. </p>
+
+<pre><code class="language-javascript">let str = `Я строка`;
+str.charAt(999); // ""</code></pre>
+
+<p>А давайте попробуем заменить букву "Я" на "я"</p>
+
+<pre><code>let str = 'Я строка';
+
+str[0] = 'я'; // ошибка</code></pre>
+
+<p> Не получилось. А жаль. Но зато можно сказать, что строки <strong>неизменяемый тип данных.</strong></p>
+
+<blockquote> </blockquote>

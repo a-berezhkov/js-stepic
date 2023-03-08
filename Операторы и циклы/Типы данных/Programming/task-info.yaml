@@ -1,0 +1,9 @@
+type: code
+files:
+- name: task.js
+  visible: true
+  text: "// Ваш код здесь       \nconsole.log(num1, num2)\nconsole.log(result)"
+  learner_created: false
+status: Solved
+record: -1
+submission_language: javascript

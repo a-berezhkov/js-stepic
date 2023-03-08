@@ -1,0 +1,78 @@
+<h1>Параметры функции</h1>
+
+<p>Ранее уже задавались параметры функции и все отлично работало. Но что будет, если функция требует параметр, а он не передан?</p>
+
+<pre><code class="language-javascript">function showMessage(anySimpleArray) {
+    for (let name of anySimpleArray) {
+        console.log(`Привет, ${name} !`)
+    }
+}
+
+showMessage()</code></pre>
+
+<p>Такой код выдаст ошибку. </p>
+
+<p>Что же делать, если существует возможно того, что придет пустой массив или в некоторых случаях использование параметра не обязательно? Разработчики JS подумали об этом и сделали возможным установить значение по-умолчанию для параметров функции.</p>
+
+<p>Для этого в параметрах функции необходимо присвоить значение по-умолчанию. При этом вызов без параметра не вызовет ошибку.  Для этого всего лишь необходимо присвоить параметру функции значение при ее объявлении.</p>
+
+<pre><code class="language-javascript">const message = ["Игорь", "Илья", "Петр", "Иван", "Кирилл"]
+
+function showMessage(anySimpleArray = []) {
+    for (let name of anySimpleArray) {
+        console.log(`Привет, ${name} !`)
+    }
+}
+
+showMessage(); // ничего не выведет
+
+showMessage(message); 
+
+//     Привет, Игорь !
+//     Привет, Илья !
+//     Привет, Петр !
+//     Привет, Иван !
+//     Привет, Кирилл !</code></pre>
+
+<p>В функцию можно передать любое количество параметров </p>
+
+<pre><code class="language-javascript">const message = ["Игорь", "Илья", "Петр", "Иван", "Кирилл"];
+
+const obj = {item: "value"};
+
+const str = "Строка";
+
+const int = 123;
+
+function showMessage(message, obj, str, int) {
+    console.log(message, obj, str, int);
+}
+
+showMessage(message, obj, str, int); //[ 'Игорь', 'Илья', 'Петр', 'Иван', 'Кирилл' ] { item: 'value' } Строка 123
+
+</code></pre>
+
+<p>И даже если неизвестно, сколько будет параметров, можно использовать специальный оператор <code>...</code>  в этом случае полчится массив внутри функции</p>
+
+<pre><code class="language-javascript">const message = ["Игорь", "Илья", "Петр", "Иван", "Кирилл"];
+
+const obj = {item: "value"};
+
+const str = "Строка";
+
+const int = 123;
+
+function showMessage(...ourArr) {
+    console.log(ourArr);
+}
+
+showMessage(message, obj, str, int);
+
+// [
+//     [ 'Игорь', 'Илья', 'Петр', 'Иван', 'Кирилл' ],
+//         { item: 'value' },
+//         'Строка',
+//         123
+// ]
+
+</code></pre>

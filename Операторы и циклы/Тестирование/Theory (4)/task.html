@@ -1,0 +1,41 @@
+<h1>Асинхронные тесты</h1>
+
+<p>Для создания асинхронных тестах используется специальный метод <code>done() </code>который необходимо предать в качестве параметра для метода <code>it()</code>. Метод <code>done()</code> может принимать объект <code>Error</code> в качестве аргумента.</p>
+
+<p>Для того, что бы делать запросы на сервер в Node.js используем библиотеку <a href="https://github.com/axios/axios" rel="noopener noreferrer nofollow">axios</a>.</p>
+
+<pre><code class="language-javascript">describe('#getListTodo', function () {
+  it('should show data', function (done) {
+    axios.get('http://24api.ru/rest-todo')
+      .then((res) =&gt; {
+        let error = new Error("Ошибочка")
+        res.status === 200 &amp;&amp; isArray(res.data) ? done() : done(error)
+
+      })
+  })
+});</code></pre>
+
+<p>В примере выше описан тест API, куда отправляется запрос методом GET на адрес <a href="http://24api.ru/rest-todo" rel="noopener noreferrer nofollow">http://24api.ru/rest-todo</a>. Ответ сервера содержит массив объектов</p>
+
+<pre><code>[
+  {
+    id: 17,
+    name: '234324',
+    isDone: 0,
+    created_at: null,
+    updated_at: null,
+    user_id: 2
+  },
+ {
+    id: 18,
+    name: '234324',
+    isDone: 0,
+    created_at: null,
+    updated_at: null,
+    user_id: 2
+  }
+]</code></pre>
+
+<p>Если запрос будет выполнен успешно и ответ будет содержать массив, считается что тест успешно пройден, в противном случае будет выведена ошибка.</p>
+
+<p>Вместо функции done() можно использовать и возврат промиса. Более подробно это описано в документации - <a href="https://mochajs.org/#working-with-promises" rel="noopener noreferrer nofollow">https://mochajs.org/#working-with-promises</a>.</p>

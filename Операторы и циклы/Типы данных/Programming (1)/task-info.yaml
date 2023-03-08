@@ -1,0 +1,13 @@
+type: code
+custom_name: Programming
+files:
+- name: task.js
+  visible: true
+  text: |-
+    function solution(a, b){
+        return false; // Замените  false на сумму значений a и b
+    }
+  learner_created: false
+status: Solved
+record: -1
+submission_language: javascript

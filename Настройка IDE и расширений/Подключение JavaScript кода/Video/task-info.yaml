@@ -1,0 +1,30 @@
+type: video
+files:
+- name: task.js
+  visible: true
+  text: |+
+    // You can experiment here, it won’t be checked
+
+  learner_created: false
+thumbnail: https://ucarecdn.com/010e9759-2680-4d64-a8d6-9886a5c9e2d8/
+sources:
+- src: https://stepikvideo.blob.core.windows.net/video/244079/720/adfb838893e699a5a8a1e58d683e9806.mp4
+  res: 720
+  type: video/mp4
+  label: 720p
+- src: https://stepikvideo.blob.core.windows.net/video/244079/540/384718f08248d37d4c34a8189ba7b88a.mp4
+  res: 540
+  type: video/mp4
+  label: 540p
+- src: https://stepikvideo.blob.core.windows.net/video/244079/360/bc428d1eb068e2c5384f444f5905b110.mp4
+  res: 360
+  type: video/mp4
+  label: 360p
+- src: https://stepikvideo.blob.core.windows.net/video/244079/240/89507ac0cd228f57fe2a0453f9a014c5.mp4
+  res: 240
+  type: video/mp4
+  label: 240p
+currentTime: 0
+status: Solved
+record: -1
+post_submission_on_open: true

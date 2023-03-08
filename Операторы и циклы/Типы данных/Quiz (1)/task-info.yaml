@@ -1,0 +1,18 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: "true"
+- text: "false"
+- text: undefined
+- text: "null"
+files:
+- name: task.js
+  visible: true
+  text: |+
+    // You can experiment here, it won’t be checked
+
+  learner_created: false
+status: Unchecked
+record: -1
+custom_name: Quiz
+local_check: false

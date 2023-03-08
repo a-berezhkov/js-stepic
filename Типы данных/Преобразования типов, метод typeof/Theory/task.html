@@ -1,0 +1,71 @@
+<h1>Преобразования типов</h1>
+
+<p>Преобразование типов может потребоваться если необходимо явно преобразовать строку в число или наоборот. В зависимости от ситуации нам может быть удобно работать с переменной как строкой  или как с числом.</p>
+
+<h2>Строки</h2>
+
+<p>К примеру, если мы хотим сложить разряды числа 123, то удобней представить его в виде строки "123", так как тогда мы получим доступ к каждому символу. </p>
+
+<pre><code class="language-javascript">let str = String(123);
+console.log(typeof str); //string</code></pre>
+
+<h2>Числа</h2>
+
+<p>Преобразование в число часто происходит неявно, при использовании математических операций (если это возможно) </p>
+
+<pre><code class="language-javascript">console.log("10"/"2"); //5</code></pre>
+
+<p>Но это можно сделать и явно</p>
+
+<pre><code class="language-javascript">let str = String(123);
+console.log(typeof str); //string
+let num = Number(str)
+console.log(typeof num); //number</code></pre>
+
+<p>Для чисел справедливо следующие преобразование </p>
+
+<p>численного преобразования:</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>Значение</th>
+			<th>Преобразуется в…</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><code>undefined</code></td>
+			<td><code>NaN</code></td>
+		</tr>
+		<tr>
+			<td><code>null</code></td>
+			<td><code>0</code></td>
+		</tr>
+		<tr>
+			<td><code>true / false</code></td>
+			<td><code>1</code> / <code>0</code></td>
+		</tr>
+		<tr>
+			<td><code>string</code></td>
+			<td>Пробельные символы (пробелы, знаки табуляции <code>\t</code>, знаки новой строки <code>\n</code> и т. п.) по краям обрезаются. Далее, если остаётся пустая строка, то получаем <code>0</code>, иначе из непустой строки «считывается» число. При ошибке результат <code>NaN</code>.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Булевые (bool) </h2>
+
+<p>Все, что нужно знать о преобразовании:</p>
+
+<ul>
+	<li>Значения <code>0</code>, пустая строка, <code>null</code>, <code>undefined</code> и <code>NaN</code>, становятся <code>false</code>.</li>
+	<li>Все остальные значения становятся <code>true</code></li>
+</ul>
+
+<pre><code class="language-javascript">Boolean(123);// true
+Boolean(0);// false
+Boolean("0");// true
+Boolean("string");// true
+Boolean(NaN); //false
+Boolean(null); //false
+</code></pre>

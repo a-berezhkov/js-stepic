@@ -1,0 +1,46 @@
+<h1>Строки (часть 1)</h1>
+
+<p>Главное в этом разделе - не запутаться в кавычках, их будет много.</p>
+
+<p>Для объявления строки используются любые кавычки - <code>"" </code>,<code> '' </code>или <code>``</code>(для ` - нажимаете на букву <code>ё</code> с клавишей <code>shift</code>)</p>
+
+<pre><code class="language-javascript">let s1 = "Строка раз"
+let s2 = 'Строка два'
+let s3 = `Строка три`</code></pre>
+
+<p>Возникает логичное желание разобраться в таком количестве кавычек. </p>
+
+<p>Между <code>''</code> одинарными и  <code>""</code> двойными кавычками нет разницы.</p>
+
+<p>А вот в обратные кавычки <code>``</code> позволяют вставлять внутрь вычисляемые выражения с помощью конструкции <code>${…}</code></p>
+
+<pre><code class="language-javascript">let name = "Егор";
+`Привет, ${name}!`; // Привет, Егор!</code></pre>
+
+<p>В обратные кавычки может вставлять более одной строки</p>
+
+<pre><code class="language-javascript">let fruitList = `
+ - Apple
+ - Banana
+ - Cherry
+`;</code></pre>
+
+<p>Чаще для переноса строк используется специальный символ - <code>\n </code></p>
+
+<pre><code class="language-javascript">let fruitList = "- Apple\n- Banana\n- Cherry";</code></pre>
+
+<p>Есть и другие спецсимволы: </p>
+
+<p><code>\'</code>, <code>\"</code> - Кавычки (если необходимо их добавить внутри строки). При этом сам <code>\</code> часто называют "символом экранирования". </p>
+
+<p><code>\uXXXX</code>  - Символ в кодировке UTF-16 с шестнадцатеричным кодом XXXX, например, \u00A9 — Юникодное представление знака копирайта, ©.</p>
+
+<p><code>\\</code> - Служит для отображения слеша внутри строки.</p>
+
+<p>Остальные можно найти с помощью поисковой системы.</p>
+
+<p>Прежде чем продолжить работу со строками, потребуется научиться выводить и получать данные для удобной отладки.</p>
+
+<blockquote>
+<p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String" rel="noopener noreferrer nofollow">https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String</a></p>
+</blockquote>

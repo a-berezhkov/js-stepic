@@ -1,0 +1,63 @@
+<h1>Оператор typeof</h1>
+
+<p>Оператор <strong><code>typeof</code></strong> возвращает строку, указывающую тип операнда.</p>
+
+<pre><code>console.log(typeof 965); // "number"
+
+console.log(typeof 'Привет!'); // "string"
+
+console.log(typeof true); // "boolean"
+
+console.log(typeof var); //"undefined"
+</code></pre>
+
+<p><code>typeof </code>возвращает следующие значения в зависимости от типов (обрати внимание на <code>null</code>)</p>
+
+<table>
+	<thead>
+		<tr>
+			<th>Тип</th>
+			<th>Результат</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Undefined</td>
+			<td><code>"undefined"</code></td>
+		</tr>
+		<tr>
+			<td>Null</td>
+			<td><code>"object" </code></td>
+		</tr>
+		<tr>
+			<td>Boolean</td>
+			<td><code>"boolean"</code></td>
+		</tr>
+		<tr>
+			<td>Number</td>
+			<td><code>"number"</code></td>
+		</tr>
+		<tr>
+			<td>String</td>
+			<td><code>"string"</code></td>
+		</tr>
+		<tr>
+			<td>Symbol (новый тип из ECMAScript 2015)</td>
+			<td><code>"symbol"</code></td>
+		</tr>
+		<tr>
+			<td>Function object</td>
+			<td><code>"function"</code></td>
+		</tr>
+		<tr>
+			<td>Любой другой тип</td>
+			<td><code>"object"</code></td>
+		</tr>
+	</tbody>
+</table>
+
+<p> </p>
+
+<blockquote>
+<p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/typeof" rel="noopener noreferrer nofollow">https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/typeof</a></p>
+</blockquote>

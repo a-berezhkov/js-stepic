@@ -1,0 +1,162 @@
+<h1>Fetch (get)</h1>
+
+<p>Разобраться с fetch и промисами проще всего на примере.</p>
+
+<p>Давайте рассмотрим реальный пример. На серверной части существует база данных с таблицами.</p>
+
+<p style="text-align: center;"><img alt="" height="434" name="shop.png" src="https://ucarecdn.com/594c0115-2d15-49da-a28f-ef04175725c7/" width="213"></p>
+
+<p>Для этой структуры есть некий скрипт, который отдает данные из этих таблиц в формате JSON. Для удобства работы документация доступна на swagger: <a href="https://app.swaggerhub.com/apis-docs/a-berezhkov/shop-api/1.0.0-oas3" rel="noopener noreferrer nofollow">https://app.swaggerhub.com/apis-docs/a-berezhkov/shop-api/1.0.0-oas3</a></p>
+
+<p><img alt="" height="728" name="image.png" src="https://ucarecdn.com/29e84a65-1ec6-4507-98cd-2a50a85eb573/" width="2816">Если вы перейдете на страницу <a href="http://24api.ru/rest-shop/country" rel="noopener noreferrer nofollow">http://24api.ru/rest-shop/country</a> в браузере, то получите список стран в формате JSON. </p>
+
+<p>Давайте попробуем получить эти данные на JavaScript.</p>
+
+<p>Напишем запрос на получение данных, используя fetch. Запустить код через Node.js не получится, поэтому необходимо создать html-файл и подключить его там.</p>
+
+<pre><code class="language-javascript">const response = fetch("http://24api.ru/rest-shop/country", {
+    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    headers: {
+        'Content-Type': 'application/json'
+    },
+
+});
+
+console.log(response)</code></pre>
+
+<p>Результат в консоли будет неожиданным.  Мы получили промис. пока не будем вдаваться в детали.</p>
+
+<p style="text-align: center;"><img alt="" height="707" name="image.png" src="https://ucarecdn.com/9def78b9-fa3b-4ce8-8fb1-501e058f0dba/" width="416"></p>
+
+<p>Давайте его обработаем с помощью специальной конструкции then()</p>
+
+<pre><code>const response = fetch("http://24api.ru/rest-shop/country", {
+    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    headers: {
+        'Content-Type': 'application/json'
+    },
+
+});
+
+response.then((res) =&gt; {
+    console.log(res)
+    console.log(res.json())
+})
+</code></pre>
+
+<p>Немного о then()</p>
+
+<p>Первый аргумент метода <code>.then</code> – функция, которая выполняется, когда промис переходит в состояние «выполнен успешно», и получает результат.</p>
+
+<p>Второй аргумент <code>.then</code> – функция, которая выполняется, когда промис переходит в состояние «выполнен с ошибкой», и получает ошибку.</p>
+
+<p>В этом случае данные вроде бы есть, но их так и не получить.</p>
+
+<p style="text-align: center;"><img alt="" height="496" name="image.png" src="https://ucarecdn.com/ab708c0c-0432-4fc6-90d2-eb14e608b297/" width="704"></p>
+
+<p>Но можно видеть, что в переменной <code>res</code> есть данные о состоянии запроса (что уже неплохо) , а функция <code>json()</code> возвращает данные. Дополним еще немного код</p>
+
+<pre><code class="language-javascript">const response = fetch("http://24api.ru/rest-shop/country", {
+    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    headers: {
+        'Content-Type': 'application/json'
+    },
+
+});
+
+response.then(
+    (res) =&gt; {
+        return res.json()
+    },
+    (error) =&gt; console.log("Ошибочка, ответа нет")
+).then(country =&gt; {
+    console.log(country);
+})
+</code></pre>
+
+<p>Теперь в переменной <code>country</code> есть необходимые данные.</p>
+
+<p style="text-align: center;"><img alt="" height="216" name="image.png" src="https://ucarecdn.com/e9c36b2b-6472-4ba8-a1a3-fa6edb3fdd7c/" width="734"></p>
+
+<p>Отлично! Теперь мы можем получить данные и их обработать. Так как промис асинхронный, то получить данные извне мы не можем.</p>
+
+<pre><code class="language-javascript">const response = fetch("http://24api.ru/rest-shop/country", {
+    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    headers: {
+        'Content-Type': 'application/json'
+    },
+
+});
+
+response.then(
+    (res) =&gt; {
+        return res.json()
+    },
+    (error) =&gt; console.log("Ошибочка, ответа нет")
+).then(country =&gt; {
+    console.log(country);
+})
+
+console.log(res) //Uncaught ReferenceError: res is not defined
+console.log(country)  //Uncaught ReferenceError: country is not defined
+</code></pre>
+
+<p>Но можем использовать  синхронные функции внутри асинхронного кода.</p>
+
+<pre><code class="language-javascript">const response = fetch(
+     ...
+});
+
+response.then(
+    (res) =&gt; {
+        return res.json()
+    },
+    (error) =&gt; console.log("Ошибочка, ответа нет")
+).then(country =&gt; {
+    doSmthWithData(country)
+})
+
+function doSmthWithData(data) {
+    for (let item in data) {
+        console.log(data[item])
+    }
+}</code></pre>
+
+<p>Результат будет таким.<img alt="" height="450" name="image.png" src="https://ucarecdn.com/be93d790-d0cb-4ecc-b56e-28b3e9f41a24/" width="1238">Теперь попробуем усложнить код и получить все данные по городам для России.</p>
+
+<pre><code>const response = fetch("http://24api.ru/rest-shop/country", {
+    method: 'GET', // *GET, POST, PUT, DELETE, etc.
+    headers: {
+        'Content-Type': 'application/json'
+    },
+
+});
+
+response.then(
+    (res) =&gt; {
+        return res.json()
+    },
+    (error) =&gt; console.log("Ошибочка, ответа нет")
+).then(country =&gt; {
+    getCity(country)
+})
+
+function getCity(country) {
+    const response = fetch("http://24api.ru/rest-shop/city?id=" + 1, {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+    });
+    response.then(
+        (res) =&gt; {
+            return res.json()
+        },
+        (error) =&gt; console.log("Ошибочка, ответа нет")
+    ).then(city =&gt; {
+        console.log(city)
+    })
+
+}
+</code></pre>

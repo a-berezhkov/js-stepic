@@ -1,0 +1,67 @@
+<h1>Импорт функций </h1>
+
+<p>Давайте теперь создадим отдельный файл "<code>index.js</code>" с набором функций экспортируем их.</p>
+
+<pre><code class="language-javascript">/**
+ * Фцнкция сложения
+ * @param {*} a 
+ * @param {*} b 
+ * @returns 
+ */
+function sum(a,b){
+    return a+b;
+}
+/**
+ * Функция вычитания
+ * @param {*} a 
+ * @param {*} b 
+ * @returns 
+ */
+function minus(a,b){
+    return a - b
+}
+exports.sum = sum
+exports.minus = minus</code></pre>
+
+<p>В примере используются  <code>exports</code> для передачи методов в другой файл. Добавим теперь несколько методов для проверки в "<code>test.js</code>".</p>
+
+<pre><code class="language-javascript">const functions = require('./index.js');
+const assert = require('assert');
+ 
+  describe('#sum', function () {
+    it('сложение 2 + 3' , function () {
+      assert.equal(functions.sum(2,3), 5);
+    });
+    it('сложение 100  и -99' , function () {
+      assert.equal(functions.sum(100,-99), 1);
+    });
+    it('сложение -11  и -22' , function () {
+      assert.equal(functions.sum(-11,-22), -33);
+    });
+    it('сложение 0.11  и 0.22' , function () {
+      assert.equal(functions.sum(0.11,0.22), 0.33);
+    });
+  });
+
+   
+  describe('#minus', function () {
+    it('вычитание 2 - 3' , function () {
+      assert.equal(functions.minus(2,3), -1);
+    });
+    it('вычитание 100  и -99' , function () {
+      assert.equal(functions.minus(100,-99), 199);
+    });
+    it('вычитание -11  и -22' , function () {
+      assert.equal(functions.minus(-11,-22), 11);
+    });
+    it('вычитание 0.11  и 0.22' , function () {
+      assert.equal(functions.minus(0.11,0.22), -0.11);
+    });
+  });
+ 
+
+</code></pre>
+
+<p>Аналогичным образом могут импортированы классы, объекты, переменные. </p>
+
+<p><img alt="" height="1428" name="image.png" src="https://ucarecdn.com/38b838ca-002d-4ee1-8933-5f86f6bd847a/" width="2596"></p>

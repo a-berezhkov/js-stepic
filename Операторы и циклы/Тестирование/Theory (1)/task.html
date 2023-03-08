@@ -1,0 +1,50 @@
+<h1>Фреймворк для тестирования mocha</h1>
+
+<p>Информация и хороший мануал можно найти на официальном сайте - <a href="https://mochajs.org/#installation" rel="noopener noreferrer nofollow">https://mochajs.org</a>.</p>
+
+<p>Установка фреймворка производится с помощью менеджера зависимостей npm.</p>
+
+<pre><code>$ npm install --global mocha</code></pre>
+
+<p>После установки фреймворка нужно создать в папке проекта файл test.js и внести туда следующий код.</p>
+
+<pre><code class="language-javascript">var assert = require('assert');
+describe('Array', function () {
+  describe('#indexOf()', function () {
+    it('should return -1 when the value is not present', function () {
+      assert.equal([1, 2, 3].indexOf(4), -1);
+    });
+  });
+});</code></pre>
+
+<p>Для запуска теста достаточно в консоли из директории проекта выполнить команду <code>mocha</code>.</p>
+
+<p style="text-align: center;"><img alt="" height="206" name="image.png" src="https://ucarecdn.com/cbc99bc3-7d42-4f65-896f-d244da4d2042/" width="529"></p>
+
+<p>После успешного запуска, давайте разберемся, что же произошло.</p>
+
+<pre><code>describe('Array', function () {
+  
+});</code></pre>
+
+<p>Методы describe представляет собой описание функциональности, которую мы проверяем.  </p>
+
+<p>То же самое относится и к этому участку. </p>
+
+<pre><code class="language-javascript">describe('#indexOf()', function () {
+     
+});</code></pre>
+
+<p>Если посмотреть на вывод результат выполнения теста - там будет как подпись "<code>Array</code>" так и "<code>#indexOf()</code>". </p>
+
+<p>describe предназначен только для группировок самих тестов -  блоков <code>it</code>. Если говорить об общем синтаксисе, то он выглядит следующим образом <code>describe("заголовок", function() { ... })</code>.</p>
+
+<p>Блоки it служат для описания самих тестов. Самое важное - то бы выполнение результата было понятным.</p>
+
+<pre><code class="language-javascript">it('should return -1 when the value is not present', function () {
+    assert.equal([1, 2, 3].indexOf(4), -1);
+});</code></pre>
+
+<p>В примере выводится сообщение, что тест "должен вернуть -1 когда значение отсутсвует". </p>
+
+<p>Функция <code>assert.equal()</code>имеет два аргумента - первый условие которое проверяется, в нашем случае <code>[1, 2, 3].indexOf(4)</code> , второе - ожидаемый результат <code>-1</code>. Если <code>assert.equal()</code> вернет true - тест будет считаться успешно пройденным.</p>

@@ -1,0 +1,116 @@
+<h1>Логические операторы</h1>
+
+<p>Существует четыре логических оператора - || (ИЛИ), &amp;&amp; (И) и ! (НЕ) и ?? (Оператор нулевого слияния).</p>
+
+<p>Рассмотри сразу на простом примере.  Нам нужна программа, которая проверяет пароль пользователя на длину - не менее 6 символов и не более 8. </p>
+
+<p>Для этого можно написать вот такой код</p>
+
+<pre><code class="language-javascript">(6&lt;password) &amp;&amp; (password&lt;10)</code></pre>
+
+<p>Только в случае, если <code>password </code>будет от 6 до 10 символов выражение примет значение <code>true</code></p>
+
+<pre><code>true &amp;&amp; true // true</code></pre>
+
+<p>Для того, что бы понимать какой результат будет, нужно запомнить таблицу истинности</p>
+
+<table border="1" cellpadding="1" cellspacing="1" style="width: 500px;">
+	<tbody>
+		<tr>
+			<td style="text-align: center;">A</td>
+			<td style="text-align: center;">B</td>
+			<td style="text-align: center;">|| (ИЛИ)</td>
+			<td style="text-align: center;">&amp;&amp; (И)</td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">true</td>
+			<td style="text-align: center;">true</td>
+			<td style="text-align: center;"><strong>true</strong></td>
+			<td style="text-align: center;"><strong>true</strong></td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">false</td>
+			<td style="text-align: center;">false</td>
+			<td style="text-align: center;"><strong>false</strong></td>
+			<td style="text-align: center;"><strong>false</strong></td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">false</td>
+			<td style="text-align: center;">true</td>
+			<td style="text-align: center;"><strong>true</strong></td>
+			<td style="text-align: center;"><strong>false</strong></td>
+		</tr>
+		<tr>
+			<td style="text-align: center;">true</td>
+			<td style="text-align: center;">false</td>
+			<td style="text-align: center;"><strong>true</strong></td>
+			<td style="text-align: center;"><strong>false</strong></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Не (!) используется как отрицание</p>
+
+<pre><code class="language-javascript">!true; // false
+!false; // true</code></pre>
+
+<p>Приоритет НЕ <code>!</code> является наивысшим из всех логических операторов, поэтому он всегда выполняется первым, перед <code>&amp;&amp;</code> или <code>||</code></p>
+
+<p>Приоритет оператора <code>&amp;&amp;</code> больше, чем у <code>||</code></p>
+
+<h2>Оператор нулевого слияния (??)</h2>
+
+<p>Результат выражения a ?? b будет следующим:</p>
+
+<ol>
+	<li>если a определено ( не является <code>null </code>или <code>undefined</code>) , то a,</li>
+	<li>если a не определено ( является <code>null </code>или <code>undefined</code>), то b.</li>
+</ol>
+
+<pre><code class="language-javascript">a = 1;
+b = 1;
+
+a ?? b; // 1
+
+a = null;
+b = 1;
+
+a ?? b; // 1
+
+a = undefined;
+b = 1;
+
+a ?? b; // 1
+
+a = 1;
+b = null;
+
+a ?? b; // 1
+
+a = 1;
+b = undefined;
+
+a ?? b; // 1
+
+a = undefined;
+b = undefined;
+
+a ?? b; // undefined
+
+a = null;
+b = undefined;
+
+a ?? b; // undefined
+
+a = undefined;
+b = null;
+
+a ?? b; // null
+
+</code></pre>
+
+<p>Приоритет оператора <code>??</code> такой же, как и у <code>||</code>. </p>
+
+<blockquote>
+<p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Expressions_and_Operators#%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%8B" rel="noopener noreferrer nofollow">https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Expressions_and_Operators#%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%D1%8B</a></p>
+</blockquote>

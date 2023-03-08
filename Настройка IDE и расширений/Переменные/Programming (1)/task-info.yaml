@@ -1,0 +1,12 @@
+type: code
+custom_name: Programming
+files:
+- name: task.js
+  visible: true
+  text: |-
+    // создайте константу hello и присвойте ей значени "Привет !"
+    console.log(hello)
+  learner_created: false
+status: Solved
+record: -1
+submission_language: javascript

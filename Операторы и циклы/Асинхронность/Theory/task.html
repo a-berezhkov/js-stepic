@@ -1,0 +1,59 @@
+<h1>Колбэки</h1>
+
+<p>Колбек - это когда в качестве параметра функции мы передаем функцию. И все.  </p>
+
+<p>Вот така история.</p>
+
+<p>А вот пример</p>
+
+<pre><code class="language-javascript">function dosmth(callback){
+    console.log("Run dosmth")
+    callback()
+}
+
+function itsCallbackFunction() {
+    console.log("Run itsCallbackFunction")
+}
+
+dosmth(itsCallbackFunction)</code></pre>
+
+<p>На просторах интернета можно найти много всяких примеров, связанных с асинхронностью и применением колбэков. Надо понимать, что в большинстве случаев можно обойтись и без них. Они используется для того, что бы код был более структурирован, когда происходит множество событий.</p>
+
+<p>Рассмотрим пример, когда это может быть удобно</p>
+
+<pre><code class="language-javascript">
+let a = 10;
+let b = 5;
+
+function sum(a, b) {
+    let c = a+b
+    showResult(c)
+}
+
+function showResult(c) {
+    console.log(c)
+}
+
+sum(a, b)</code></pre>
+
+<p>В примере выше все понятно: есть функций <code>sum()</code>, которая выполняет сложение и функция <code>showResult()</code> которая отображает результат. Проблема в том, что функция <code>sum()</code> выполняет только одно действие, а <code>showResult() </code>выводит результат. С одной стороны - это правильно, когда логика разделена. С другой стороны - сложно использовать эти методы повторно. </p>
+
+<p>Добавление колбэка решает эту сложность.</p>
+
+<pre><code class="language-javascript">let a = 10;
+let b = 5;
+
+function doSome(a, b, action, display) {
+    display(action(a, b))
+}
+
+function showResult(c) {
+    console.log(c)
+}
+
+doSome(a, b, () =&gt; a + b,showResult)
+doSome(a, b, () =&gt; a - b,showResult)</code></pre>
+
+<p>Теперь функция <code>doSome() </code>не зависит от выполняемого действия.  Мы можем передать туда любую функцию колбэк для вычислений. </p>
+
+<p>Так же можно в дальнейшем использовать как <code>showResult()</code>, так и <code>doSome()</code> выбирая вариант действия и отображения. Т.е. избавляться от связанности функций.</p>

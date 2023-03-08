@@ -1,0 +1,24 @@
+type: choice
+is_multiple_choice: true
+options:
+- text: let _;
+- text: const COLOR_RED;
+- text: let a.b;
+- text: let a-b;
+- text: let $;
+- text: let isAgree;
+- text: let a;
+- text: let 12b;
+- text: let closeMessage;
+- text: let !;
+files:
+- name: task.js
+  visible: true
+  text: |+
+    // You can experiment here, it won’t be checked
+
+  learner_created: false
+status: Solved
+record: -1
+custom_name: Quiz
+local_check: false

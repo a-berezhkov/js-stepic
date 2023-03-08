@@ -1,0 +1,9 @@
+type: code
+custom_name: Programming
+files:
+- name: task.js
+  visible: true
+  learner_created: false
+status: Solved
+record: -1
+submission_language: javascript

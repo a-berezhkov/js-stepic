@@ -1,0 +1,65 @@
+<h1>Объявление переменных</h1>
+
+<p>Для <strong>объявления переменных</strong> можно использовать следующие конструкции:</p>
+
+<p><code>let a = 5;</code></p>
+
+<p><code>const b = 6;</code></p>
+
+<p>При этом значения 5 и 6 записываются в переменные <code>a</code> и <code>b</code> соответственно.</p>
+
+<p>Такая операция (<code>=</code>) называется операцией <strong>присваивания</strong>. </p>
+
+<p>Разница в <code>let</code> и <code>const</code> заключается в том, что:</p>
+
+<ul>
+	<li>с помощью <code>let</code> объявляется переменная, которую можно изменить;</li>
+	<li> <code>const</code> объявляет <strong>константу</strong>, которая не поддается изменениям.</li>
+</ul>
+
+<p>К примеру, код ниже выполнится отлично.</p>
+
+<pre><code>let a = 10;
+
+a = 2;</code></pre>
+
+<p>А вот с константой так уже не получится:</p>
+
+<pre><code class="language-javascript">const a = 10;
+
+a = 2; // Ошибка!</code></pre>
+
+<p>Очень удобно иногда читать код буквально. К примеру <code>let</code> означает "пусть" а <code>const</code> - константа. Тогда все обретает смысл - "пусть a будет равно 5"!</p>
+
+<p>Важно отметить, что константы должны быть инициализированы.</p>
+
+<pre><code class="language-javascript">const a; //  Uncaught SyntaxError: Missing initializer in const declaration
+const a = 5; </code></pre>
+
+<p>В переменной или константе можно хранить любые данные: число, строку, массив и т.д.</p>
+
+<pre><code class="language-javascript">let stringWithText = "Любой текст, который вам нравится";
+
+let stringWithNumber= 123488;</code></pre>
+
+<p>Можно записать объявление переменных и в одну строчку, но так код становится менее читабельным. </p>
+
+<pre><code class="language-javascript">let stringWithText = "Любой текст, который вам нравится", stringWithNumber= 123488</code></pre>
+
+<p>Почему это так важно? Дело в том, что любой продукт - это тысячи строк кода, а создает его команда разработчиков. Очень тяжело понять, как работает чужой код (а иногда и свой), поэтому очень важно делать его понятным для всех.</p>
+
+<p>Еще можно копировать данные из одной переменной в другую.</p>
+
+<pre><code class="language-javascript">let someVar = 111
+let newVar = someVar</code></pre>
+
+<p>Хотя можно и не задавать значение переменной при ее объявлении.</p>
+
+<pre><code class="language-javascript">let someVar = 111
+let newVar;
+newVar = someVar;</code></pre>
+
+<p> А вот чего нельзя - это два раза объявлять переменную с одним именем.</p>
+
+<pre><code class="language-javascript">let a = 10;
+let a = 5; // Ошибка</code></pre>

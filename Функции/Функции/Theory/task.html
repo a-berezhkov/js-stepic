@@ -1,0 +1,188 @@
+<h1>Функции</h1>
+
+<p>Функции есть практически во всех языках программирования. По сути функции - это некоторое объединение кода. Давайте рассмотрим такой пример - нам нужен код, который  выводит сообщение в консоль </p>
+
+<pre><code class="language-javascript">let message1 = "Игорь"
+let message2 = "Илья"
+let message3 = "Петр"
+let message4 = "Иван"
+let message5 = "Кирилл"
+
+console.log(`Привет, ${message1} !`)
+console.log(`Привет, ${message2} !`)
+console.log(`Привет, ${message3} !`)
+console.log(`Привет, ${message4} !`)
+console.log(`Привет, ${message5} !`)</code></pre>
+
+<p>Естественно, такой код можно оптимизировать, к примеру так</p>
+
+<pre><code class="language-javascript">const message = ["Игорь","Илья","Петр","Иван","Кирилл"]
+
+for (let name of message){
+    console.log(`Привет, ${name} !`)
+}</code></pre>
+
+<p>Это работает и выглядит не так страшно как код выше.</p>
+
+<p>Усложним задачу - добавим вывод марок автомобилей. Цикл из предыдущей задачи вполне подойдет для этого.</p>
+
+<pre><code class="language-javascript">const message = ["Игорь", "Илья", "Петр", "Иван", "Кирилл"]
+
+for (let name of message) {
+    console.log(`Привет, ${name} !`)
+}
+
+const cars = ["ford", "kia", "lexus", "lada", "nissan"]
+
+for (let name of cars) {
+    console.log(`Привет, ${name} !`)
+}</code></pre>
+
+<p>Нетрудно заметить, что код очень похожий,  выполняет одинаковую задачу для разных данных. Так как цикл выполняет схожую задачу в обоих случаях, хотелось бы избавиться от повторяющегося кода. Как раз в таких ситуациях пригодятся функции. Однако прежде чем написать функцию, рассмотрим ее синтаксис.</p>
+
+<pre><code class="language-javascript">function имя(параметры) {
+  ...тело...
+}</code></pre>
+
+<p>Пока нам хватит того, что выше описана <strong>декларативная функция</strong>. Из обязательного - это ключевое слово <code>function</code>, <code>имя функции</code> и <code>все скобки</code>. </p>
+
+<p>И конечно, нам нужны будут <strong>параметры</strong> - это те же типы данных или переменные, которые будут передаваться в функцию.</p>
+
+<p>Теперь надо придумать имя функции. Так как наша функция занимается только отображением данных, назовем ее <code>showMessage.</code></p>
+
+<pre><code class="language-javascript">function showMessage() {
+    
+}</code></pre>
+
+<p>Если сейчас запустить код - ничего не произойдет. Во-первых, наша функция ничего не делает, а во-вторых - мы только оформили некий блок, однако не запустили его.  Дополним функцию следующим образом: добавим параметр <code><strong>names</strong></code> , который она будет принимать, и цикл, который мы писали.</p>
+
+<pre><code class="language-javascript">function showMessage(names) {
+    for (let name of names) {
+        console.log(`Привет, ${name} !`)
+    }
+}</code></pre>
+
+<p>Здесь стоит уделить внимание параметру <code>names</code>, который принимает функция <code>showMessage</code> . Во-первых, подразумевается, что параметр <code>names</code> будет массивом, так как если мы передадим строку или число, то получим ошибку в цикле. Во-вторых, в примере выбрано название <code>names</code>, однако оно может быть совершенно любым, от этого ничего на зависит. Важно только чтобы внутри функции мы использовали параметр с тем же именем.</p>
+
+<pre><code class="language-javascript">function showMessage(anySimpleArray) {
+    for (let name of anySimpleArray) {
+        console.log(`Привет, ${name} !`)
+    }
+}</code></pre>
+
+<p>Переменные <code>names</code> или <code>anySimpleArray</code> будут задаваться при вызове функции, в самом простом варианте, это будет выглядеть так. Вызов функции - это ее запуск. Как раз в момент вызова начинает выполнять код внутри функции. Для вызова функции используется ее название и скобки - <code>showMessage()</code>, а в случае с передачей параметров они указываются в скобках <code>showMessage(["a", "b", "c"]);</code></p>
+
+<pre><code class="language-javascript">// создание функции showMessage()
+function showMessage(anySimpleArray) {
+    for (let name of anySimpleArray) {
+        console.log(`Привет, ${name} !`)
+    }
+}
+
+showMessage(["a", "b", "c"]); // вызов функции showMessage()
+ </code></pre>
+
+<p>В примере выше явно передан в параметр функции <code>anySimpleArray</code> массив <code>["a", "b", "c"]</code>. </p>
+
+<p>Если рассмотреть более детально, то получится следующая последовательность действий:</p>
+
+<p>1) создан блок кода (функция) с именем showMessage(), которая ждет один параметр anySimpleArray</p>
+
+<p>2) запущена функция showMessage(), где в параметр <code>anySimpleArray</code> записано значение <code>["a", "b", "c"]</code> (фактически выполнена операция <code>anySimpleArray = ["a", "b", "c"]</code></p>
+
+<p>3) запускается цикл внутри функции. На место переменной <code>anySimpleArray</code> подставляется массив <code>["a", "b", "c"]</code></p>
+
+<p>Можно то же самое сделать, используя переменные в качестве параметров.</p>
+
+<pre><code class="language-javascript">const message = ["Игорь", "Илья", "Петр", "Иван", "Кирилл"]
+
+const cars = ["ford", "kia", "lexus", "lada", "nissan"]
+
+function showMessage(anySimpleArray) {
+    for (let name of anySimpleArray) {
+        console.log(`Привет, ${name} !`)
+    }
+}
+
+showMessage(message);
+
+//Привет, Игорь !
+//Привет, Илья !
+//Привет, Петр !
+//Привет, Иван !
+//Привет, Кирилл !
+
+showMessage(cars);
+
+//Привет, ford !
+//Привет, kia !
+//Привет, lexus !
+//Привет, lada !
+//Привет, nissan !
+</code></pre>
+
+<p>Самое замечательное то, что больше нет двух циклов, а функцию можно использовать сколько угодно раз.  </p>
+
+<p> </p>
+
+<p>Помимо function declaration (декларативной функции), в javascript'е есть function expression. В чем же различие? Давайте разбираться. <br>
+Function expression записывается немного иначе.</p>
+
+<pre><code class="language-javascript">переменная = function(параметры) {
+  ...тело...
+}
+
+
+const funcExpression = function(param1, param2){
+   return param1 + param2
+}</code></pre>
+
+<p>То есть сначала вы задаёте переменную, присваиваете ей функцию именованную, затем задаёте <strong>параметры </strong>(аргументы), если нужно, и так же расписываете тело функции.</p>
+
+<p>Если declaration функцию можно вызывать до её объявления или после, она всё равно будет работать, а вот с function expression уже такое не сработает. Здесь уже надо будет вызывать строго после объявления. </p>
+
+<pre><code class="language-javascript">const func = function(a, b) { 
+      console.log(a + b); 
+};
+func(2,3) //5</code></pre>
+
+<p><strong>Вызываем после функции! </strong>Иначе будет ошибка. <br>
+Почему же такое происходит, что одна функция работает, а другая нет? Дело в том, что интерпретатор проходит по нашему файлу, читает его и запоминает те строки, которые начинаются со слов "function", а это у нас только function declaration</p>
+
+<p>Зачем нам нужно знать function expression, если они требуют определённых правил? Самое первое, это для того, чтобы привыкнуть к стрелочным функциям.  </p>
+
+<p>Стрелочная функция выглядит так же как и function expression, только без слова function, оно просто опускается, а стрелка, которая появляется, заменяет слово return.</p>
+
+<pre><code class="language-javascript">
+const func = function() { 
+  return a + b
+}
+
+стрелочная функция:
+
+const func = () =&gt; { a + b}</code></pre>
+
+<p> Как вы видите, слово function мы опустили и вместо него добавили стрелку. На самом деле, если стрелочная функция выполняет одно действие, то даже можно и фигурные скобки опустить:</p>
+
+<pre><code class="language-javascript">const func = () =&gt;  a + b</code></pre>
+
+<p>Но если действий будет несколько, то скобки будут обязательны:</p>
+
+<pre><code class="language-javascript">const func = () =&gt;  {
+  a + b
+  x - y
+}</code></pre>
+
+<p> Вы уже с декларативных функций знаете, что у функций есть параметры(аргументы), если у вас в стрелочной функции есть всего один аргумент(параметр), то и здесь можно опустить скобки:<br>
+   </p>
+
+<pre><code class="language-javascript">(param) =&gt;  a + b </code></pre>
+
+<p><br>
+Получается: </p>
+
+<pre><code class="language-javascript">  param =&gt; a + b</code></pre>
+
+<p><br>
+Сократили до минимума символов, здорово, правда? <br>
+Это будет удобно, когда познакомимся с прослушкой событий, то стрелочные функции будут как никак кстати.</p>

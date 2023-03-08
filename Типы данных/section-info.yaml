@@ -1,0 +1,6 @@
+content:
+- Введение
+- Число (number)
+- Строки (string)
+- "Булевый (bool), undefined, null"
+- "Преобразования типов, метод typeof"

@@ -1,0 +1,12 @@
+<h1>Стрелочные функции</h1>
+
+<p>Тестировщики выступают против стрелочных функций, так как они имеют свой контекст выполнения. Поэтому конструкция ниже на сработает (пример взят с документации), так как this имеет контекст функции.</p>
+
+<pre><code class="language-javascript">describe('my suite', () =&gt; {
+  it('my test', () =&gt; {
+    // should set the timeout of this test to 1000 ms; instead will fail
+    this.timeout(1000);
+    assert.ok(true);
+  });
+});
+</code></pre>

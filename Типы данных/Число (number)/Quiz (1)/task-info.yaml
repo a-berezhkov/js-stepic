@@ -1,0 +1,18 @@
+type: choice
+is_multiple_choice: false
+options:
+- text: i=3; k=2; j=2
+- text: i=3; k=1; j=2
+- text: i=2; k=2; j=2;
+- text: i=0; k=2; j=2;
+files:
+- name: task.js
+  visible: true
+  text: |+
+    // You can experiment here, it won’t be checked
+
+  learner_created: false
+status: Failed
+record: -1
+custom_name: Quiz
+local_check: false

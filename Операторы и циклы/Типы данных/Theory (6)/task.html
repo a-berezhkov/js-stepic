@@ -1,0 +1,117 @@
+<h1>Булевый тип и операции сравнения</h1>
+
+<p>Казалоcь бы тут все просто - булевая переменная имеет только два значение - <code>true</code> и <code>false</code>. Обычно переменные, которые имеют такой тип начинают со слова <code>is</code> ( <code>isDone</code>) или <code>bool</code> (<code>boolDone</code>). </p>
+
+<pre><code class="language-javascript">let workIsDone = true; // да, работа сделана
+let workIsDone = false; // нет, работа не сделана</code></pre>
+
+<p>Этот типа важен для различных условий. Давайте сравним числа 3 и 4.</p>
+
+<pre><code class="language-javascript">console.log(3&gt;4); // false
+console.log(3&lt;4); // true</code></pre>
+
+<p>Так же можно проверить равенство (<code>==</code>) или неравеснство (<code>!=</code>) значений.</p>
+
+<pre><code class="language-javascript">console.log(3==4); // false
+console.log(3!=4); // true</code></pre>
+
+<p>Есть еще строгое равенство (===), которое проверяет не только равенство значения, но и типа.</p>
+
+<pre><code class="language-javascript">console.log(3===3); // true
+console.log(3==="3"); // false</code></pre>
+
+<p> Так же как и математике можем использовать сравнени больше или равно - <code>&gt;= </code>и меньше или равно <code>&lt;=</code>.</p>
+
+<pre><code class="language-javascript">console.log(3&gt;=3); // true
+console.log(3=&lt;3); // true</code></pre>
+
+<h2>Операции сравнени над строками </h2>
+
+<p>Строки так же можно сравнивать, но надо понимать, что они строки сравниваются посимвольно.</p>
+
+<pre><code class="language-javascript">alert( 'Б' &gt; 'А' ); // true
+alert( 'Коты' &gt; 'Котя' ); // false
+alert( 'Сонный' &gt; 'Сон' ); // true</code></pre>
+
+<p>Алгоритм сравнения двух строк довольно прост:</p>
+
+<ol>
+	<li>Сначала сравниваются первые символы строк.</li>
+	<li>Если первый символ первой строки больше (меньше), чем первый символ второй, то первая строка больше (меньше) второй. Сравнение завершено.</li>
+	<li>Если первые символы равны, то таким же образом сравниваются уже вторые символы строк.</li>
+	<li>Сравнение продолжается, пока не закончится одна из строк.</li>
+	<li>Если обе строки заканчиваются одновременно, то они равны. Иначе, большей считается более длинная строка.</li>
+</ol>
+
+<p>Приведённый выше алгоритм сравнения похож на алгоритм, используемый в словарях и телефонных книгах, но между ними есть и различия.</p>
+
+<p>Например, в JavaScript имеет значение регистр символов. Заглавная буква <code>"A"</code> не равна строчной <code>"a"</code>. Какая же из них больше? Строчная <code>"a"</code>. Почему? Потому что строчные буквы имеют больший код во внутренней таблице кодирования, которую использует JavaScript (Unicode).</p>
+
+<h2>Сравнение разных типов</h2>
+
+<h3>Строка и число</h3>
+
+<p>При сравнении значений разных типов JavaScript приводит каждое из них к числу.</p>
+
+<pre><code class="language-javascript">console.log( '2' &gt; 1 ); // true, строка '2' становится числом 2
+console.log( '01' == 1 ); // true, строка '01' становится числом 1</code></pre>
+
+<h3>Булевый тип и число</h3>
+
+<p>Булевый тип будет преобразован в <code>1</code> и <code>0</code></p>
+
+<pre><code class="language-javascript">console.log( true == 1 ); // true
+console.log( false == 0 ); // true</code></pre>
+
+<h3>Сравнение с null и undefined </h3>
+
+<p>Тут все гораздо интересней. </p>
+
+<pre><code class="language-javascript">console.log( null === undefined ); // false</code></pre>
+
+<p>Это логично, так как null и undefined имеют разные типы.</p>
+
+<pre><code class="language-javascript">console.log( null == undefined ); // true</code></pre>
+
+<p>А вот строчка выше не очень логиячна, поэтому ее надо просто запомнить.</p>
+
+<p><strong>Эти значения равны друг другу и не равны никаким другим значениям.</strong> Это специальное правило языка. </p>
+
+<p>При использовании математических операторов и других операторов сравнения <code>&lt; &gt; &lt;= &gt;=</code></p>
+
+<p>Значения <code>null/undefined</code> преобразуются к числам: <code>null</code> становится <code>0</code>, а <code>undefined</code> – <code>NaN</code>.</p>
+
+<h3>Сравнение 0 и null</h3>
+
+<pre><code class="language-javascript">console.log( null &gt; 0 );  // false
+console.log( null == 0 ); // false
+console.log( null &gt;= 0 ); // true</code></pre>
+
+<p>Сравнения преобразуют <code>null</code> в число, рассматривая его как <code>0</code>. Поэтому первый пример null &gt;= 0 имеет false.</p>
+
+<p>То, что вот второй строке null == 0  возвраващает false логично, об этом писали выше)</p>
+
+<p>И исходя того, что null бужет преобразован к 0 - третья строка так же имеет место быть. </p>
+
+<p><strong>Значение <code>undefined</code> несравнимо с другими значениями</strong></p>
+
+<pre><code class="language-javascript">console.log( undefined &gt; 0 );  // false
+console.log( undefined &lt; 0 );  // false
+console.log( undefined == 0 );  // false
+console.log( undefined === 0 );  // false
+console.log( undefined &gt; 1 );  // false
+console.log( undefined &lt; 1 );  // false
+console.log( undefined  == 1 );  // false
+console.log( undefined  === 1 );  // false
+console.log( undefined  == null );  // true
+console.log( undefined  === null );  // false
+console.log( undefined  &lt; null );  // false
+console.log( undefined  &gt; null );  // false
+console.log( undefined  == NaN );  // false
+console.log( undefined  === NaN );  // false</code></pre>
+
+<p>В общем, надо стараться избегать сравнения с u<code>ndefined/null</code>.</p>
+
+<blockquote>
+<p><a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Boolean" rel="noopener noreferrer nofollow">https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Boolean</a></p>
+</blockquote>

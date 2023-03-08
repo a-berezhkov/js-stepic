@@ -1,0 +1,14 @@
+type: code
+files:
+- name: task.js
+  visible: true
+  text: |-
+    let a;// присвойте значение 5 переменной a
+    let b;// присвойте значение 4 переменной b
+    const c;// присвойте значение 3 переменной c
+    // создайте константу d и присвойте ей значение 2
+    console.log(a,b,c,d)
+  learner_created: false
+status: Solved
+record: -1
+submission_language: javascript

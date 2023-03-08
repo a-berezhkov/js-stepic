@@ -1,0 +1,23 @@
+<h1>Infinity, -Infinity и NaN.</h1>
+
+<p>В JS возможно деление на 0. И результат известен заранее - <code>Infinity</code>. <code>Infinity</code> это некое число, которое является бесконечностью ∞ и будет больше любого числа.</p>
+
+<pre><code class="language-javascript">let num = 3;
+num/0;// Infinity</code></pre>
+
+<p>Это значение можно задать и явно</p>
+
+<pre><code class="language-javascript">let inf = Infinity;
+console.log(inf); //Infinity</code></pre>
+
+<p>Аналогичная история с  <code>-Infinity</code> и <code>NaN</code>. И если для получения <code>-Infinity</code>  достаточно поделить отрицательное число на 0, то с <code>NaN</code> поинтересней. Строго говоря <code>NaN</code> является значением, представляющим не-число.</p>
+
+<p>Как его получить? Это довольно сложно и часто связано с математическими операциями. Но возможно.</p>
+
+<pre><code class="language-javascript">(-1) ** (1/2) //NaN</code></pre>
+
+<p>Еще можно попытаться поделить строку на число</p>
+
+<pre><code class="language-javascript">"строка"/10; //NaN</code></pre>
+
+<p>Короче, надо запомнить, что любая математическая операция с <code>NaN</code> возвращает <code>NaN</code> и что <code>NaN</code>  не является равным ничему другому, даже самому себе.</p>
